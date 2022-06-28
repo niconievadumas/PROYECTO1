@@ -5,3 +5,4 @@ then
     deactivate
 fi
 . venv/Scripts/activate
+. venv/bin/activate
