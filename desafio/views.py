@@ -1,23 +1,23 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import loader
-from .models import Prueba
+from .models import Perro
 
 # Create your views here.
 
 def una_vista(request):
     return render(request, 'index.html' )
 
-def un_template(request):
+def crear_perro(request):
     
     # template = loader.get_template('index.html')
     
-    prueba1 = Prueba(nombre= 'Nico')
-    prueba2 = Prueba(nombre= 'Leo')
-    prueba3 = Prueba(nombre= 'Juan')
-    prueba1.save()
-    prueba2.save()
-    prueba3.save()
+    # prueba1 = Perro(nombre= 'Nico')
+    # prueba2 = Perro(nombre= 'Leo')
+    # prueba3 = Perro(nombre= 'Juan')
+    # prueba1.save()
+    # prueba2.save()
+    # prueba3.save()
 
     # render = template.render({'lista_objetos': [prueba1, prueba2, prueba3]})
     
