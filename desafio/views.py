@@ -7,6 +7,7 @@ from .models import Prueba
 
 def una_vista(request):
     return render(request, 'index.html' )
+
 def un_template(request):
     
     # template = loader.get_template('index.html')
