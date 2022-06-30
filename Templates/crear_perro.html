@@ -1,21 +1,25 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<title></title>
+<title>Crear Perros</title>
 {% endblock title %}
 
-{% block h1 %}
-Este es mi template
-{% endblock h1 %}
+{% block texto_header %}
+<h1>Creacion de perro</h1> 
+{% endblock texto_header %}
 
 {% block despues_del_header %}
-
 <p>
-    <ul>
-        {% for objeto in lista_objetos %}
-        <li> {{objeto.nombre}} </li>
-        {% endfor %}
-    </ul>
+    <form action="" method="get">
+        <p>
+            Nombre:
+            <input type="text" name="nombre">
+        </p>
+        <p>
+            Edad:
+            <input type="number" name="edad">
+        </p>
+        <button>Crear</button>
+    </form>
 </p>
-
 {% endblock despues_del_header %}
