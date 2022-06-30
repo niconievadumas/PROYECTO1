@@ -10,15 +10,18 @@
 
 {% block despues_del_header %}
 <p>
-    <form action="" method="get">
-        <p>
+    <form action={% url 'crear_perro' %} method="post">
+        {% csrf_token %}
+        {% comment %} <p>
             Nombre:
             <input type="text" name="nombre">
         </p>
         <p>
             Edad:
             <input type="number" name="edad">
-        </p>
+        </p> {% endcomment %}
+        
+        <table>{{form}}</table>
         <button>Crear</button>
     </form>
 </p>
