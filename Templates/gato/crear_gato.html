@@ -1,20 +1,20 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<title>Editar Perros</title>
+<title>Crear Gatos</title>
 {% endblock title %}
 
 {% block texto_header %}
-<h1>Editar perro</h1> 
+<h1>Creacion de gatos</h1>  
 {% endblock texto_header %}
 
 {% block despues_del_header %}
 <p>
-    <a href={% url 'listado_perros' %}>Volver</a>
+    <a href={% url 'listado_gatos' %}>Volver</a>    
 </p>
 
 <p>
-    <form action={% url 'editar_perro' perro.id %} method="post">
+    <form action={% url 'crear_gatos' %} method="post">
         {% csrf_token %}
         {% comment %} <p>
             Nombre:
@@ -26,7 +26,7 @@
         </p> {% endcomment %}
         
         <table>{{form}}</table>
-        <button>Editar</button>
+        <button>Crear</button>
     </form>
 </p>
 {% endblock despues_del_header %}

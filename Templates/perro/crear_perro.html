@@ -5,10 +5,14 @@
 {% endblock title %}
 
 {% block texto_header %}
-<h1>Creacion de perro</h1> 
+<h1>Creacion de perro</h1>  
 {% endblock texto_header %}
 
 {% block despues_del_header %}
+<p>
+    <a href={% url 'listado_perros' %}>Volver</a>    
+</p>
+
 <p>
     <form action={% url 'crear_perro' %} method="post">
         {% csrf_token %}
