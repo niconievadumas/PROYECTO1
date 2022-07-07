@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Editar Perros</title>
+{% endblock title %}
+
+{% block texto_header %}
+<h1>Editar perro</h1> 
+{% endblock texto_header %}
+
+{% block despues_del_header %}
+<p>
+    <form action={% url 'editar_perro' perro.id %} method="post">
+        {% csrf_token %}
+        {% comment %} <p>
+            Nombre:
+            <input type="text" name="nombre">
+        </p>
+        <p>
+            Edad:
+            <input type="number" name="edad">
+        </p> {% endcomment %}
+        
+        <table>{{form}}</table>
+        <button>Editar</button>
+    </form>
+</p>
+{% endblock despues_del_header %}
