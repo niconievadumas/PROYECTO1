@@ -1,23 +1,27 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<title>Editar Gatos</title>
+<title>Eliminar Gato</title>
 {% endblock title %}
 
+
 {% block texto_header %}
-<h1>Editar gato</h1> 
+<h1>Eliminar Gato</h1> 
 {% endblock texto_header %}
 
 {% block despues_del_header %}
 <p>
     <a href={% url 'listado_gatos' %}>Volver</a>
 </p>
+
 <p>
-    <form action={% url 'editar_gato' gato.id %} method="post">
+    <form action="{% url 'eliminar_gato' object.id   %}"method='post'>
         {% csrf_token %}
-    
-        <table>{{form}}</table>
-        <button>Editar</button>
+        Desea eliminar el gato?
+        <button>Confirmar</button>
     </form>
 </p>
+
+
 {% endblock despues_del_header %}
+

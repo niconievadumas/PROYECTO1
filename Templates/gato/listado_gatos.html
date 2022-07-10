@@ -14,18 +14,12 @@
     <a href={% url 'crear_gato' %}>Crear Gato</a>
 </p>
 
-<p>
-    <form action={% url 'listado_gatos' %}>
-        {{form}}
-        <button>Buscar</button>
-    </form>
-</p>
 
 <p>
-    {% if listado_gatos %}
+    {% if object_list %}
     <ul>
-        {% for gato in listado_gatos%}
-        <li> {{perro}} 
+        {% for gato in object_list%}
+        <li> {{gato}} 
             <a href={% url 'mostrar_gato' gato.id %}>Mostrar</a>
             <a href={% url 'editar_gato' gato.id %}>Editar</a>
             <a href={% url 'eliminar_gato' gato.id %}>Eliminar</a>

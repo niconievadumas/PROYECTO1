@@ -1,6 +1,6 @@
 from django.views.generic.list import ListView
 from django.views.generic.edit import DeleteView, UpdateView, CreateView
-from django.views.generic.base import View
+from django.views.generic import DetailView
 from .models import Gato
 
 class ListadoGatos(ListView):
@@ -10,24 +10,29 @@ class ListadoGatos(ListView):
     
 class CrearGato(CreateView):
     model = Gato
-    template_name = 'gato/crear_gatos.html'
-    success_url = 'gatos'
+    template_name = 'gato/crear_gato.html'
+    success_url = '/mascotas/gatos/'
+    fields = ['apodo', 'edad']
+    
     
 
 class EditarGato(UpdateView):
     model = Gato
-    template_name = 'gato/editar_gatos.html'
-    success_url = 'gatos'
+    template_name = 'gato/editar_gato.html'
+    success_url = '/mascotas/gatos'
+    fields = ['apodo', 'edad','fecha_creacion']
+
 
     
 
 class EliminarGato(DeleteView):
     model = Gato
-    template_name = 'gato/eliminar_gatos.html'
-    success_url = 'gatos'
+    template_name = 'gato/eliminar_gato.html'
+    success_url = '/mascotas/gatos'
 
 
-# class MostrarGato(View):  
-#     model = Gato
-#     template_name = 'gato/mostrar_gatos.html'
+class MostrarGato(DetailView):  
+    model = Gato
+    template_name = 'gato/mostrar_gato.html' 
+    
           
