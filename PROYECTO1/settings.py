@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'desafio',
-    'mascotas'
+    'mascotas',
+    'accounts'
 ]
 
 MIDDLEWARE = [
