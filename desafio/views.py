@@ -98,7 +98,7 @@ def editar_perro(request, id):
     return render(request, 'perro/editar_perro.html', {"form": form_perro, "perro":perro})  
 
   
-    return redirect("listado_perros")
+    # return redirect("listado_perros")
     
 @login_required
 def eliminar_perro(request, id):

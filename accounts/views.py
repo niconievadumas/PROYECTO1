@@ -1,7 +1,9 @@
 from django.shortcuts import redirect, render
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login as dj_login
-# Create your views here.
+from django.contrib.auth.decorators import login_required
+from .forms import MyUserCreationForm, MyUserEditForm
+
 
 def login(request):
     
@@ -32,7 +34,48 @@ def login(request):
 
 
 def register(request):
+
+    if request.method == 'POST':
+        form = MyUserCreationForm(request.POST)
+        if form.is_valid(): 
+            form.save()
+            return render(request, 'index.html', {})
+        else:
+            return render(request, 'accounts/register.html', {'form': form})
     
-    return render(request, 'accounts/register.html', {'form': ''})
+    form = MyUserCreationForm()
+    return render(request, 'accounts/register.html', {'form': form})
     
+
+@login_required 
+def perfil(request):
+    return render(request, "accounts/perfil.html")
+
+
+@login_required 
+def editar_perfil(request):
+
+    user = request.user
+
+    if request.method == "POST":
+        form = MyUserEditForm(request.POST) 
+
+        if form.is_valid():
+            data = form.cleaned_data
+            user.first_name = data.get("first_name") 
+            user.last_name = data.get("last_name") 
+            user.email = data.get("email") 
+            user.password1 = data.get("password1")
+            user.password2 = data.get("password2")
+            user.save()
+
+            return redirect("perfil")
+
+        else:
+            return render(request, 'accounts/editar_perfil.html', {"form": form})  
+    
+    form = FormPerro(initial={"nombre": perro.nombre, "edad": perro.edad, "fecha_creacion": perro.fecha_creacion})
+
+    return render(request, "accounts/editar_perfil.html", {"form": form})
+
     
