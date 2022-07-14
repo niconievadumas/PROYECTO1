@@ -5,7 +5,7 @@ from django.template import loader
 from .forms import BusquedaPerro, FormPerro
 from .models import Perro
 from datetime import datetime
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def una_vista(request):
@@ -74,7 +74,7 @@ def listado_perros(request):
     form = BusquedaPerro()
     return render(request,"perro/listado_perros.html", {"listado_perros": listado_perros, "form": form})
 
-
+@login_required
 def editar_perro(request, id):
 
     perro = Perro.objects.get(id=id) 
@@ -100,7 +100,7 @@ def editar_perro(request, id):
   
     return redirect("listado_perros")
     
-
+@login_required
 def eliminar_perro(request, id):
 
     perro = Perro.objects.get(id=id)
