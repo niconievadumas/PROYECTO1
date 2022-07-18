@@ -62,11 +62,15 @@ def editar_perfil(request):
 
         if form.is_valid():
             data = form.cleaned_data
-            user.first_name = data.get("first_name") 
-            user.last_name = data.get("last_name") 
-            user.email = data.get("email") 
-            user.password1 = data.get("password1")
-            user.password2 = data.get("password2")
+            if data.get("first_name"):
+                user.first_name = data.get("first_name") 
+            
+            user.last_name = data.get("last_name") if data.get("last_name") else user.last_name
+            user.email = data.get("email") if data.get("email") else user.email 
+            
+            if data.get("password1") and data.get("password1") == data.get("password2"):
+                user.set_password(data.get("password1"))      #para guardar el pass
+            
             user.save()
 
             return redirect("perfil")
@@ -74,8 +78,15 @@ def editar_perfil(request):
         else:
             return render(request, 'accounts/editar_perfil.html', {"form": form})  
     
-    form = FormPerro(initial={"nombre": perro.nombre, "edad": perro.edad, "fecha_creacion": perro.fecha_creacion})
+    form = MyUserEditForm(
+        initial={
+            'email': user.email,
+            'first_name': user.first_name,
+            'last_name': user.last_name
+            }
+        )
 
     return render(request, "accounts/editar_perfil.html", {"form": form})
 
     
+     

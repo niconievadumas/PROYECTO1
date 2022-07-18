@@ -18,7 +18,7 @@ class MyUserCreationForm(UserCreationForm):
         helptext = { key: "" for key in fields}
 
 
-class MyUserEditForm(forms.form):
+class MyUserEditForm(forms.Form):
 
     email = forms.EmailField(required=False)
     first_name = forms.CharField(label="Nombre", max_length=30,required=False)
