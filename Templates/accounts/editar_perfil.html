@@ -13,7 +13,7 @@
 {% block despues_del_header %}
 
 <p>
-    <form action={% url 'editar_perfil' %} method="post">
+    <form action={% url 'editar_perfil' %} method="post" enctype="multipart/form-data">  #el multipart va siempre que se trab con imgs
         {% csrf_token %}
         
         <table>{{form}}</table>
