@@ -13,11 +13,16 @@
 {% block despues_del_header %}
 
 <p>
-    <form action={% url 'editar_perfil' %} method="post" enctype="multipart/form-data">  #el multipart va siempre que se trab con imgs
+    <form action={% url 'editar_perfil' %} method="post" enctype="multipart/form-data">  
+        {% comment %} el multipart va siempre que se trab con imgs {% endcomment %}
         {% csrf_token %}
         
         <table>{{form}}</table>
         <button>Editar</button>
     </form>
+</p>
+ 
+<p>
+    <a href={% url 'cambiar_password' %}>Cambiar password</a>
 </p>
 {% endblock despues_del_header %}
