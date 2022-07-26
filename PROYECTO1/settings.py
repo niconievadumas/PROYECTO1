@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'desafio',
     'mascotas',
     'accounts',
-    "ckeditor"
+    "ckeditor",
 ]
 
 MIDDLEWARE = [
